@@ -1,0 +1,16 @@
+{
+  "name": "Les Beaux Essentiels — Gestion",
+  "short_name": "Beaux Essentiels",
+  "description": "Plateforme de gestion : commandes, stocks, comptabilité, social media et studio créatif.",
+  "start_url": "./#/dashboard",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbf8f4",
+  "theme_color": "#f8f1ea",
+  "lang": "fr",
+  "icons": [
+    { "src": "icons/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icone-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icone.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
