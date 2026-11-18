@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Les Beaux Essentiels · Gestion</title>
+  <meta name="description" content="Plateforme de gestion — Les Beaux Essentiels : Beauté · Senteurs · Accessoires">
+  <meta name="theme-color" content="#f8f1ea">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Beaux Essentiels">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="icon" href="icons/icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icone-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Great+Vibes&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/studio.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="logo" href="#/dashboard" aria-label="Les Beaux Essentiels — accueil">
+        <span class="l1">les</span><span class="l2">BEAUX</span><span class="l3">ESSENTIELS</span>
+      </a>
+      <div class="tagline">Beauté · Senteurs · Accessoires</div>
+      <nav class="nav" id="nav"></nav>
+      <div class="pied">Vos données restent dans ce navigateur.<br>Pensez à exporter une sauvegarde 🤍</div>
+    </aside>
+
+    <header class="topbar">
+      <a class="logo petit" href="#/dashboard" aria-label="Accueil">
+        <span class="l1">les</span><span class="l2">BEAUX</span><span class="l3">ESSENTIELS</span>
+      </a>
+      <div class="titre-page" id="titre-page"></div>
+    </header>
+
+    <main class="main" id="main"></main>
+    <nav class="bottom-nav" id="bottom-nav"></nav>
+  </div>
+
+  <div id="modal-root"></div>
+  <div id="toast-root"></div>
+
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/catalogue.js"></script>
+  <script src="js/stocks.js"></script>
+  <script src="js/commandes.js"></script>
+  <script src="js/compta.js"></script>
+  <script src="js/social.js"></script>
+  <script src="js/messages.js"></script>
+  <script src="js/parametres.js"></script>
+  <script src="js/studio.js"></script>
+  <script src="js/studio-photo.js"></script>
+  <script src="js/studio-video.js"></script>
+</body>
+</html>
