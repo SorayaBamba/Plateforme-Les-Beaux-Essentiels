@@ -61,7 +61,7 @@
     el.innerHTML =
       (LBE.store.aDesExemples() ? '<div class="demo-banner"><span style="flex:1">✨ <b>Données d\'exemple fictives</b> affichées pour découvrir la plateforme.</span><button class="btn petit" data-act="effacer-demo">' + icon("poubelle") + " Effacer les exemples</button></div>" : "") +
       '<div class="page-head"><div><div class="sur-titre" style="display:block">' + esc(dateLongue) + '</div><h1 style="display:block">' + salut + " ✨</h1></div>" +
-      '<div class="actions"><button class="btn primaire" data-act="cmd">' + icon("plus") + ' Commande</button><button class="btn" data-act="arr">' + icon("avion") + ' Arrivage</button><button class="btn" data-act="dep">' + icon("euro") + ' Dépense</button><a class="btn sable" href="#/studio">' + icon("studio") + " Visuel</a></div></div>" +
+      '<div class="actions"><button class="btn primaire" data-act="cmd">' + icon("plus") + ' Commande</button><button class="btn" data-act="arr">' + icon("avion") + ' Arrivage</button><button class="btn" data-act="dep">' + icon("euro") + ' Dépense</button><a class="btn sable" href="#/studio">' + icon("studio") + " Visuel</a><button class=\"btn\" data-act=\"saisie\">✨ Saisie Claude</button></div></div>" +
 
       '<div class="grid g4 mb">' +
       '<div class="card kpi"><div class="label">CA du mois</div><div class="valeur">' + f.euro(b.recettes) + '</div><div class="sous">' + (evol != null ? '<span class="tendance ' + (evol >= 0 ? "up" : "down") + '">' + (evol >= 0 ? "▲ " : "▼ ") + f.pct(Math.abs(evol)) + "</span> vs " + f.MOIS[Number(moisP.slice(5)) - 1] : b.nbVentes + " vente(s)") + "</div></div>" +
@@ -101,6 +101,7 @@
     act("cmd", () => LBE.commandes.ficheCommande(null));
     act("arr", () => LBE.stocks.ficheArrivage(null));
     act("dep", () => LBE.compta.ficheDepense(null));
+    act("saisie", () => LBE.saisie.ouvrir());
     act("effacer-demo", () => ui.confirmer("Effacer toutes les données d'exemple ? Vos propres saisies et vos réglages sont conservés.", () => { LBE.store.effacerExemples(); ui.toast("Exemples effacés ✓"); LBE.rafraichir(); }, "Effacer"));
     el.querySelectorAll("[data-relance]").forEach((b) => (b.onclick = () => LBE.commandes.proposerMessage(q.commande(b.dataset.relance), "m_paie")));
   }

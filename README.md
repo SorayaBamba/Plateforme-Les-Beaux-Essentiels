@@ -66,6 +66,42 @@ Le **Studio vidéo** propose :
 
 **Confidentialité** : avec un compte GitHub gratuit, le dépôt doit être *public* pour utiliser Pages. Le **code** est donc visible, mais **vos données ne le sont pas** : elles restent dans votre navigateur. Une personne qui ouvre le lien voit une plateforme vide (ou les exemples fictifs).
 
+## Saisir ses données en discutant avec Claude
+
+1. Dans **Paramètres**, cliquez sur **Copier un résumé pour Claude**, puis collez le résumé dans la conversation. Claude connaît alors vos noms de produits exacts et vos numéros de commande.
+2. Décrivez vos opérations en langage courant, par exemple : « commande de Fatou, 2 Classique Nacre et 1 musc vanille, payée par Wero ».
+3. Claude répond avec un **code de saisie**. Dans la plateforme, ouvrez **✨ Saisie Claude** (Tableau de bord ou Paramètres), collez le code, puis cliquez sur **Vérifier** et sur **Valider**.
+
+Rien n'est enregistré avant la validation. Les lignes en erreur, par exemple un produit introuvable, sont signalées et ignorées.
+
+<details>
+<summary>Format du code de saisie (pour Claude)</summary>
+
+```json
+{"version":1,"operations":[
+ {"action":"commande","date":"AAAA-MM-JJ","cliente":{"nom":"…","telephone":"…","ville":"…","relais":"…"},
+  "articles":[{"produit":"Classique Nacre","qte":2,"prix":9}],"port":4.9,"remise":0,
+  "paiement":{"statut":"recu","moyen":"Wero","date":"AAAA-MM-JJ"},"note":"…"},
+ {"action":"paiement","commande":"LBE-0012","moyen":"Wero","date":"…"},
+ {"action":"expedition","commande":"LBE-0012","suivi":"39876543","cout":4.4},
+ {"action":"livraison","commande":"LBE-0012"},
+ {"action":"annulation","commande":"LBE-0012"},
+ {"action":"cliente","nom":"…","telephone":"…","ville":"…","relais":"…","notes":"…"},
+ {"action":"produit","nom":"…","categorie":"Bayas Classiques","prix":9,"prixAchat":1.4,"poids":40,"statut":"actif|bientot|archive","description":"…",
+  "composants":[{"produit":"…","qte":1}]},
+ {"action":"arrivage","date":"…","libelle":"…","poidsKg":3,"fret":36,"transport":7.62,"articles":[{"produit":"…","qte":10,"prixAchat":1.4}]},
+ {"action":"depense","date":"…","categorie":"Emballages","libelle":"…","montant":19.9},
+ {"action":"ajustement","produit":"…","qte":-1,"motif":"casse"},
+ {"action":"attente","produit":"…","nom":"…","telephone":"…"},
+ {"action":"publication","date":"…","plateforme":"TikTok + Instagram","type":"…","produit":"…","titre":"…","statut":"idee|a_tourner|publie","legende":"…","hashtags":"…"},
+ {"action":"idee","titre":"…","type":"…","produit":"…","note":"…"},
+ {"action":"stats","date":"…","plateforme":"TikTok|Instagram","vues":0,"likes":0,"abonnes":0,"messages":0}
+]}
+```
+
+Les champs absents prennent les valeurs par défaut des paramètres. Les noms de produits et de clientes sont reconnus sans tenir compte des majuscules ni des accents. Une cliente inconnue est créée automatiquement lors d'une commande.
+</details>
+
 ## Conseils pratiques
 
 **Encaisser à distance**, du plus simple au plus protecteur :

@@ -34,6 +34,10 @@
       S().lists.categoriesProduits.map((c) => '<div class="rowi cliquable" data-cat="' + c.id + '"><div class="principal"><div class="titre">' + esc(c.nom) + '</div><div class="meta">seuil ' + c.seuil + (c.baya ? " · baya" : "") + (c.compose ? " · composé" : "") + " · " + S().produits.filter((p) => p.categorie === c.id).length + " produit(s)</div></div>" + icon("crayon") + "</div>").join("") + "</div></div>" +
       // Listes
       LISTES.map(([k, titre]) => '<div class="card"><h3>' + esc(titre) + '</h3><div class="chips" data-liste="' + k + '">' + S().lists[k].map((v, i) => '<span class="chip">' + esc(v) + '<button type="button" data-suppr="' + i + '" aria-label="Retirer">×</button></span>').join("") + '</div><form class="row-flex mt" data-ajout="' + k + '"><input name="v" placeholder="Ajouter…" style="flex:1;min-width:140px"><button class="btn petit" type="submit">' + icon("plus") + " Ajouter</button></form></div>").join("") +
+      // Saisie Claude
+      '<div class="card span2"><h3>✨ Travailler avec Claude</h3><p>Dictez vos opérations à Claude dans la conversation : il vous renvoie un <b>code de saisie</b> à coller ici. Vous vérifiez l\'aperçu, puis vous validez.</p>' +
+      '<div class="row-flex"><button class="btn primaire" id="sz-ouvrir">✨ Coller un code de saisie</button><button class="btn" id="sz-resume">' + icon("copier") + " Copier un résumé pour Claude</button></div>" +
+      '<p class="aide mt">Le résumé (produits, stocks, clientes, commandes en cours) permet à Claude d\'utiliser exactement vos noms de produits et vos numéros de commande.</p></div>' +
       // Sauvegarde
       '<div class="card span2 nacre"><h3>' + icon("telecharger") + ' Sauvegarde de vos données</h3><p>Vos données sont enregistrées <b>uniquement dans ce navigateur</b>, sur cet appareil. Elles ne sont jamais envoyées sur Internet ni dans GitHub. <b>Exportez une sauvegarde chaque semaine</b> (et avant de changer de téléphone ou de vider le cache).</p>' +
       '<div class="row-flex"><button class="btn primaire" id="export">' + icon("telecharger") + ' Exporter (JSON)</button><label class="btn" style="cursor:pointer">' + icon("televerser") + ' Importer une sauvegarde<input type="file" id="import" accept="application/json,.json" hidden></label></div>' +
@@ -63,6 +67,8 @@
       if (!l.includes(v)) l.push(v);
       LBE.store.sauver(); LBE.rafraichir();
     }));
+    el.querySelector("#sz-ouvrir").onclick = () => LBE.saisie.ouvrir();
+    el.querySelector("#sz-resume").onclick = () => LBE.saisie.resume();
     el.querySelector("#export").onclick = () => {
       const a = document.createElement("a");
       a.href = URL.createObjectURL(new Blob([LBE.store.exporter()], { type: "application/json" }));
